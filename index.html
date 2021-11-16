@@ -8,9 +8,9 @@
 
   <!-- ios-src="./Buffalo.usdz" -->
     <model-viewer
-      src="./Goldkopf.glb"
+      src="https://songsofcultures.com/web-ar/Goldkopf.glb"
 
-      poster="./Goldkopf.webp"
+      poster="https://songsofcultures.com/web-ar/Goldkopf.webp"
       shadow-intensity="1"
       ar
       autoplay
@@ -28,7 +28,7 @@
         </button>
       
         <div id="ar-prompt">
-          <img src="./hand.png">
+          <img src="https://songsofcultures.com/web-ar/hand.png">
         </div>
       
         <button id="ar-failure">
@@ -43,16 +43,16 @@
         <div class="slider">
         
           <div class="slides">
-            <button class="slide selected" onclick="switchSrc(this, 'Goldkopf')" style="background-image: url('./Goldkopf.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Luchs')" style="background-image: url('./Luchs.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Buffalo')" style="background-image: url('./Buffalo.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Fuchs')" style="background-image: url('./Fuchs.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Schildkroete')" style="background-image: url('./Schildkroete.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Hirsch')" style="background-image: url('./Hirsch.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Kuh')" style="background-image: url('./Kuh.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Elefant')" style="background-image: url('./Elefant.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'PonyBanjo')" style="background-image: url('./PonyBanjo.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Dachs')" style="background-image: url('./Dachs.webp');"></button> 
+            <button class="slide selected" onclick="switchSrc(this, 'Goldkopf')" style="background-image: url('https://songsofcultures.com/web-ar/Goldkopf.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Luchs')" style="background-image: url('https://songsofcultures.com/web-ar/Luchs.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Buffalo')" style="background-image: url('https://songsofcultures.com/web-ar/Buffalo.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Fuchs')" style="background-image: url('https://songsofcultures.com/web-ar/Fuchs.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Schildkroete')" style="background-image: url('https://songsofcultures.com/web-ar/Schildkroete.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Hirsch')" style="background-image: url('https://songsofcultures.com/web-ar/Hirsch.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Kuh')" style="background-image: url('https://songsofcultures.com/web-ar/Kuh.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Elefant')" style="background-image: url('https://songsofcultures.com/web-ar/Elefant.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'PonyBanjo')" style="background-image: url('https://songsofcultures.com/web-ar/PonyBanjo.webp');"></button>
+            <button class="slide" onclick="switchSrc(this, 'Dachs')" style="background-image: url('https://songsofcultures.com/web-ar/Dachs.webp');"></button> 
         </button></div>
 
         </div>
@@ -81,8 +81,8 @@
       </script>
 
       <audio autoplay loop id="sound">
-        <source src="./audio/Goldkopf.mp3" type="audio/mpeg">
-        <source src="./audio/Goldkopf.ogg" type="audio/ogg">
+        <source src="https://songsofcultures.com/web-ar/audio/Goldkopf.mp3" type="audio/mpeg">
+        <source src="https://songsofcultures.com/web-ar/audio/Goldkopf.ogg" type="audio/ogg">
         <p>Your browser doesn't support HTML5 audio.</p>
       </audio>
       
@@ -90,7 +90,7 @@
         const modelViewer = document.querySelector("model-viewer");
       
         window.switchSrc = (element, name) => {
-          const base = "./" + name;
+          const base = 'https://songsofcultures.com/web-ar/' + name;
           modelViewer.src = base + '.glb'; // Web
           //modelViewer.ios-src = base + '.usdz'; // IOS
           modelViewer.poster = base + '.webp';
@@ -105,7 +105,7 @@
 
           for (let i = 0; i < AudioType.length; i++) {
             let element = AudioType[i];
-            let baseaudio = './audio/';
+            let baseaudio = 'https://songsofcultures.com/web-ar/audio/';
             if(element.getAttribute("type") == 'audio/mpeg'){
               element.src = baseaudio + name + '.mp3';
             }if(element.getAttribute("type") == 'audio/ogg') {
@@ -144,7 +144,7 @@
         }
       
         #ar-button {
-          background-image: url('./ic_view_in_ar_new_white_48dp.png');
+          /*background-image: url('./ic_view_in_ar_new_white_48dp.png'); */
           background-repeat: no-repeat;
           background-size: 20px 20px;
           background-position: 12px 50%;
