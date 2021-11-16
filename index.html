@@ -90,7 +90,7 @@
         const modelViewer = document.querySelector("model-viewer");
       
         window.switchSrc = (element, name) => {
-          const base = 'https://songsofcultures.com/web-ar/' + name;
+          const base = './' + name;
           modelViewer.src = base + '.glb'; // Web
           //modelViewer.ios-src = base + '.usdz'; // IOS
           modelViewer.poster = base + '.webp';
