@@ -1,18 +1,15 @@
 <html>
 <head>
   <title>XR Test</title>
-
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-<link rel="stylesheet" href="./style.css" type="text/css" />
-
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="./style.css" type="text/css" />
 </head>
 <body>
 
   <!-- ios-src="./Buffalo.usdz" -->
     <model-viewer
-      src="./Goldkopf.glb"
-
-      poster="https://songsofcultures.com/web-ar/Goldkopf.webp"
+      src=""
+      poster=""
       shadow-intensity="1"
       ar
       autoplay
@@ -23,9 +20,7 @@
       ar-modes="webxr scene-viewer quick-look"
       alt="A 3D model carousel"
       id="model-viewer"
-    >
-  
-        
+    >  
         <button slot="ar-button" id="ar-button">
           View in your space
         </button>
@@ -44,12 +39,19 @@
         
       
         <div class="slider">
-        
           <div class="slides" id="ARelements">
+            <!--Spawn Point Elements-->
           </div>
-
         </div>
+
+
       </model-viewer>
+
+      <audio autoplay loop id="sound">
+        <source src="https://songsofcultures.com/web-ar/audio/Goldkopf.mp3" type="audio/mpeg">
+        <source src="https://songsofcultures.com/web-ar/audio/Goldkopf.ogg" type="audio/ogg">
+        <p>Your browser doesn't support HTML5 audio.</p>
+      </audio>
 
       <script>
         // Spawn Elements
@@ -86,6 +88,9 @@
         if(first){
           newDiv.className = 'slide selected';
           first = false;
+          // Audio Source Setup
+          //AudioSwitch(ARelement[i]);
+          // Modelviewer Setup
           let view = document.querySelector("model-viewer")
           view.src = './'+ARelement[i]+'.glb'
           view.setAttribute('poster',baseEle+ARelement[i]+'.webp')
@@ -98,11 +103,8 @@
         divSlides.appendChild(newDiv);
       }
 
-      </script>
-
-
-      <script>
-        function PlayStop(ButtonPress){
+      // Audio Controll Interface
+      function PlayStop(ButtonPress){
           var sound = document.querySelector("#sound");
           
           if(ButtonPress.id == "MusicOn"){
@@ -119,14 +121,28 @@
             //console.log("Aus");
           }
 
-        }
+      }
+
+      // Switch Audio Source 
+      function AudioSwitch(name){
+          let sound = document.getElementById('sound');
+          let AudioType = sound.children;
+
+          for (let i = 0; i < AudioType.length; i++) {
+            let element = AudioType[i];
+            let baseaudio = 'https://songsofcultures.com/web-ar/audio/';
+            if(element.getAttribute("type") == 'audio/mpeg'){
+              element.src = baseaudio + name + '.mp3';
+            }if(element.getAttribute("type") == 'audio/ogg') {
+              element.src = baseaudio + name + '.ogg';
+            }
+            console.log(element.src);
+          }
+      }
+
       </script>
 
-      <audio autoplay loop id="sound">
-        <source src="https://songsofcultures.com/web-ar/audio/Goldkopf.mp3" type="audio/mpeg">
-        <source src="https://songsofcultures.com/web-ar/audio/Goldkopf.ogg" type="audio/ogg">
-        <p>Your browser doesn't support HTML5 audio.</p>
-      </audio>
+
       
       <script type="module">
         const modelViewer = document.querySelector("model-viewer");
@@ -142,19 +158,7 @@
 
           // Audio Switch
 
-          let sound = document.getElementById('sound');
-          let AudioType = sound.children;
-
-          for (let i = 0; i < AudioType.length; i++) {
-            let element = AudioType[i];
-            let baseaudio = 'https://songsofcultures.com/web-ar/audio/';
-            if(element.getAttribute("type") == 'audio/mpeg'){
-              element.src = baseaudio + name + '.mp3';
-            }if(element.getAttribute("type") == 'audio/ogg') {
-              element.src = baseaudio + name + '.ogg';
-            }
-            console.log(element.src);
-          }
+          AudioSwitch(name);
           
           // console.log(sound.paused);
 
