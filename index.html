@@ -6,9 +6,10 @@
 </head>
 <body>
 
-  <!-- ios-src="./Buffalo.usdz" -->
+    
     <model-viewer
       src=""
+      ios-src=""
       poster=""
       shadow-intensity="1"
       ar
@@ -90,16 +91,19 @@
           first = false;
           // Audio Source Setup
           //AudioSwitch(ARelement[i]);
+
+
           // Modelviewer Setup
-          let view = document.querySelector("model-viewer")
-          view.src = './'+ARelement[i]+'.glb'
-          view.setAttribute('poster',baseEle+ARelement[i]+'.webp')
+          let view = document.querySelector("model-viewer");
+          view.src = './'+ARelement[i]+'.glb';
+          view.setAttribute('ios-src','./'+ARelement[i]+'.usdz');
+          view.setAttribute('poster',baseEle+ARelement[i]+'.webp');
         }else{
           newDiv.className = 'slide';
         }
         let path = baseEle + ARelement[i] + '.webp';
         newDiv.style.backgroundImage = 'url("' +path+'")';
-        newDiv.setAttribute('onclick','switchSrc(this, "'+ARelement[i]+'")')
+        newDiv.setAttribute('onclick','switchSrc(this, "'+ARelement[i]+'")');
         divSlides.appendChild(newDiv);
       }
 
@@ -136,7 +140,6 @@
             }if(element.getAttribute("type") == 'audio/ogg') {
               element.src = baseaudio + name + '.ogg';
             }
-            console.log(element.src);
           }
       }
 
@@ -150,7 +153,7 @@
         window.switchSrc = (element, name) => {
           const base = './' + name;
           modelViewer.src = base + '.glb'; // Web
-          //modelViewer.ios-src = base + '.usdz'; // IOS
+          modelViewer.setAttribute('ios-src',base+'.usdz') // IOS
           modelViewer.poster = base + '.webp';
           const slides = document.querySelectorAll(".slide");
           slides.forEach((element) => {element.classList.remove("selected");});
