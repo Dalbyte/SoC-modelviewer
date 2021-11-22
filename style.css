@@ -1,0 +1,189 @@
+/* This keeps child nodes hidden while the element loads */
+:not(:defined) > * {
+  display: none;
+}
+
+model-viewer {
+  /* background-color: #eee;*/
+  overflow-x: hidden;
+  /*--poster-color: #eee; */
+  width: 100%;
+  height: 100%;
+}
+
+#ar-button {
+  /*background-image: url('./ic_view_in_ar_new_white_48dp.png'); */
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 12px 50%;
+  background-color: #1dbfa8;
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+  /*transform: translateX(-50%);*/
+  white-space: nowrap;
+  padding: 0px 16px 0px 40px;
+  font-family: Quicksand, Helvetica Neue, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: none;
+}
+
+#ar-button:active {
+  background-color: #e8eaed;
+}
+
+#ar-button:focus {
+  outline: none;
+}
+
+#ar-button:focus-visible {
+  outline: 1px solid #4285f4;
+}
+
+@keyframes circle {
+  from {
+    transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg);
+  }
+}
+
+@keyframes elongate {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+model-viewer > #ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 175px;
+  animation: elongate 2s infinite ease-in-out alternate;
+  display: none;
+}
+
+model-viewer[ar-status="session-started"] > #ar-prompt {
+  display: block;
+}
+
+model-viewer > #ar-prompt > img {
+  animation: circle 4s linear infinite;
+}
+
+model-viewer > #ar-failure {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 175px;
+  display: none;
+}
+
+model-viewer[ar-tracking="not-tracking"] > #ar-failure {
+  display: block;
+}
+
+.slider {
+  width: 95%;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  bottom: 16px;
+  left: 3vh;
+}
+
+.slides {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 10px;
+}
+
+.slides::-webkit-scrollbar {
+  width: 10px;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.slides::-webkit-scrollbar {
+  width: 0.2vw;
+  height: 10px;
+}
+
+.slides::-webkit-scrollbar-thumb {
+  background-color: #ffbe33a2;
+  border-radius: 10px;
+}
+
+.slides::-webkit-scrollbar-track {
+  background-color: #ffbb001c;
+  border-radius: 10px;
+}
+
+.slides::-webkit-scrollbar-track:hover {
+  background-color: #ffbb0048;
+}
+
+.slides::-webkit-scrollbar-thumb:hover {
+  background-color: #ffbf33;
+}
+
+.slide {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  margin-right: 10px;
+  border-radius: 20px;
+  border: none;
+  display: flex;
+}
+
+.slide.selected {
+  border: 4px solid #ffbf33;
+}
+
+.slide:focus {
+  outline: none;
+}
+
+.slide:focus-visible {
+  outline: 1px solid #ffbf33;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.button1 {
+  background-color: #fff;
+  padding: 0px 20px 0px 20px;
+  font-family: Quicksand, Helvetica Neue, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1dbfa8;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 18px;
+  border: none;
+  position: absolute;
+  left: 3vh;
+  top: 2vh;
+}
