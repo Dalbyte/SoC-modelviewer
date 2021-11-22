@@ -12,7 +12,7 @@ model-viewer {
 }
 
 #center-button{
-  top: 2vh;
+  top: 3vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,7 @@ model-viewer {
   padding: 0px 20px 0px 20px;
   font-family: Quicksand, Helvetica Neue, sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   color: #1dbfa8;
   height: 36px;
   line-height: 36px;
@@ -38,7 +38,7 @@ model-viewer {
   padding: 0px 10px 0px 10px;
   font-family: Quicksand, Helvetica Neue, sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   color: #fff;
   height: 36px;
   line-height: 36px;
