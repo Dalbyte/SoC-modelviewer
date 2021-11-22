@@ -45,21 +45,60 @@
       
         <div class="slider">
         
-          <div class="slides">
-            <button class="slide selected" onclick="switchSrc(this, 'Goldkopf')" style="background-image: url('https://songsofcultures.com/web-ar/Goldkopf.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Luchs')" style="background-image: url('https://songsofcultures.com/web-ar/Luchs.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Buffalo')" style="background-image: url('https://songsofcultures.com/web-ar/Buffalo.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Fuchs')" style="background-image: url('https://songsofcultures.com/web-ar/Fuchs.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Schildkroete')" style="background-image: url('https://songsofcultures.com/web-ar/Schildkroete.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Hirsch')" style="background-image: url('https://songsofcultures.com/web-ar/Hirsch.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Kuh')" style="background-image: url('https://songsofcultures.com/web-ar/Kuh.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Elefant')" style="background-image: url('https://songsofcultures.com/web-ar/Elefant.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'PonyBanjo')" style="background-image: url('https://songsofcultures.com/web-ar/PonyBanjo.webp');"></button>
-            <button class="slide" onclick="switchSrc(this, 'Dachs')" style="background-image: url('https://songsofcultures.com/web-ar/Dachs.webp');"></button> 
-        </button></div>
+          <div class="slides" id="ARelements">
+          </div>
 
         </div>
       </model-viewer>
+
+      <script>
+        // Spawn Elements
+        const divSlides = document.getElementById('ARelements');
+        const ARelement = [
+        "Buffalo",
+        "Dachs",
+        "Elefant",
+        "Esel",
+        "Fuchs",
+        "FuchsGitarre",
+        "FuchsPiano",
+        "FuchsSchneemann",
+        "Goldkopf",
+        "GoldkopfMondlaute",
+        "Hirsch",
+        "Kuh",
+        "KuhPiano",
+        "Luchs",
+        "LuchsChristmas",
+        "LuchsTanz",
+        "PonyBanjo",
+        "Schaf",
+        "SchafTrommel",
+        "Schildkroete"
+      ]
+      let first = true;
+      const baseEle = 'https://songsofcultures.com/web-ar/'; // Webpreview
+      
+      for (var i = 0; i < ARelement.length; i++){
+        var newDiv = document.createElement("button");
+
+        // First Element is selected
+        if(first){
+          newDiv.className = 'slide selected';
+          first = false;
+          let view = document.querySelector("model-viewer")
+          view.src = './'+ARelement[i]+'.glb'
+          view.setAttribute('poster',baseEle+ARelement[i]+'.webp')
+        }else{
+          newDiv.className = 'slide';
+        }
+        let path = baseEle + ARelement[i] + '.webp';
+        newDiv.style.backgroundImage = 'url("' +path+'")';
+        newDiv.setAttribute('onclick','switchSrc(this, "'+ARelement[i]+'")')
+        divSlides.appendChild(newDiv);
+      }
+
+      </script>
 
 
       <script>
