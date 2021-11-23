@@ -11,13 +11,6 @@ model-viewer {
   height: 100%;
 }
 
-#center-button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 8vh;
-}
-
 .button1 {
   background-color: #fff;
   padding: 0px 20px 0px 20px;
@@ -29,6 +22,9 @@ model-viewer {
   line-height: 36px;
   border-radius: 18px;
   border: none;
+   
+  right: 10vh;
+  position: absolute;
 }
 
 #ar-button {
@@ -47,6 +43,9 @@ model-viewer {
   line-height: 36px;
   border-radius: 18px;
   border: none;
+
+  left: 10vh;
+  position: absolute;
 }
 
 #ar-button:active {
