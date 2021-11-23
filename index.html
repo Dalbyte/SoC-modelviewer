@@ -6,10 +6,10 @@
 </head>
 <body>
 
-    
+          <!-- ios-src="./Goldkopf.usdz" -->
     <model-viewer
       src="./Goldkopf.glb"
-      ios-src="./Goldkopf.usdz"
+
       poster="https://songsofcultures.com/web-ar/Goldkopf.webp"
       shadow-intensity="1"
       ar
@@ -22,9 +22,6 @@
       alt="A 3D model carousel"
       id="model-viewer"
     >  
-
-
-
 
         <div id="ar-prompt">
           <img src="https://songsofcultures.com/web-ar/hand.png">
@@ -102,7 +99,7 @@
           // Modelviewer Setup
           let view = document.querySelector("model-viewer");
           view.src = './'+ARelement[i]+'.glb';
-          view.setAttribute('ios-src','./'+ARelement[i]+'.usdz');
+          //view.setAttribute('ios-src','./'+ARelement[i]+'.usdz');
           view.setAttribute('poster',baseEle+ARelement[i]+'.webp');
         }else{
           newDiv.className = 'slide';
@@ -159,7 +156,7 @@
         window.switchSrc = (element, name) => {
           const base = './' + name;
           modelViewer.src = base + '.glb'; // Web
-          modelViewer.setAttribute('ios-src',base+'.usdz') // IOS
+          //modelViewer.setAttribute('ios-src',base+'.usdz') // IOS
           modelViewer.poster = /*base*/baseEle + name + '.webp';
           const slides = document.querySelectorAll(".slide");
           slides.forEach((element) => {element.classList.remove("selected");});

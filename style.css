@@ -103,14 +103,9 @@ model-viewer > #ar-failure {
   bottom: 175px;
   display: none;
 }
-/*
+
 model-viewer[ar-tracking="not-tracking"] > #ar-failure {
   display: block;
-}
-*/
-
-model-viewer[ar-tracking="not-presenting"] > #ar-failure {
-  display: none;
 }
 
 .slider {
