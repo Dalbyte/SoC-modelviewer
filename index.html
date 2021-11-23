@@ -22,6 +22,10 @@
       alt="A 3D model carousel"
       id="model-viewer"
     >  
+
+
+
+
         <div id="ar-prompt">
           <img src="https://songsofcultures.com/web-ar/hand.png">
         </div>
@@ -35,12 +39,12 @@
             <button class="button1"  id="MusicOn" onclick="PlayStop(this)">
               ♫ Music on!
             </button>
+            <button slot="ar-button" id="ar-button">
+              View in your space
+            </button>
           </div>
         </div>
 
-        <button slot="ar-button" id="ar-button">
-          View in your space
-        </button>
       
         <div class="slider">
           <div class="slides" id="ARelements">
@@ -156,7 +160,7 @@
           const base = './' + name;
           modelViewer.src = base + '.glb'; // Web
           modelViewer.setAttribute('ios-src',base+'.usdz') // IOS
-          modelViewer.poster = base + '.webp';
+          modelViewer.poster = /*base*/baseEle + name + '.webp';
           const slides = document.querySelectorAll(".slide");
           slides.forEach((element) => {element.classList.remove("selected");});
           element.classList.add("selected");
