@@ -142,51 +142,6 @@
             }
           }
       }
-
-
-
-      // Center Object Perfekt
-      const ARModus = document.getElementById('ar-button')
-      const CenterObj =document.getElementById('MusicOn');
-
-// Where el is the DOM element you'd like to test for visibility
-    function isHidden(el) {
-      var style = window.getComputedStyle(el);
-      //return (style.display === 'none')
-      return (el.offsetParent === null)
-    }
-
-
-    console.log(isHidden(ARModus))
-
-      /*
-      console.log(ARModus.classList);
-
-      function SwitchCenter(){
-        if ( ARModus.classList.contains('hide') ){
-              CenterObj.classList.remove("button1");
-              CenterObj.classList.add("button2");
-        }else{
-            CenterObj.classList.remove("button2");
-            CenterObj.classList.add("button1");
-        }
-      }
-
-      SwitchCenter();
-
-      function callback(mutationsList, observer) {
-      //console.log('Mutations:', mutationsList)
-      //console.log('Observer:', observer)
-        mutationsList.forEach(mutation => {
-          if (mutation.attributeName === 'class') {
-            SwitchCenter();
-          }
-        })
-      }
-
-      const mutationObserver = new MutationObserver(callback)
-      mutationObserver.observe(ARModus, { attributes: true })
-*/
       </script>
 
 
