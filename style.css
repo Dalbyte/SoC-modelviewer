@@ -12,7 +12,7 @@ model-viewer {
 }
 
 #center-button{
-  top: 3vh;
+  top: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
