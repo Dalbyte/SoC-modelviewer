@@ -23,8 +23,9 @@ model-viewer {
   line-height: 36px;
   border-radius: 18px;
   border: none;
-   
-  left: 10%;
+  
+  top:3vh;
+  left: 12vh;
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   position: absolute;
@@ -47,9 +48,10 @@ model-viewer {
   border-radius: 18px;
   border: none;
 
-  right: 10%;
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+  top:3vh;
+  right: 12vh;
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
   position: absolute;
 }
 
