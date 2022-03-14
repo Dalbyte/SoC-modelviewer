@@ -5,8 +5,6 @@
 
 </head>
 <body>
-
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
 /* This keeps child nodes hidden while the element loads */
 :not(:defined) > * {
@@ -341,42 +339,85 @@ model-viewer[ar-tracking="not-tracking"] > #ar-failure {
       }
       </script>
 
+<script type="module">
+  const modelViewer = document.querySelector("model-viewer");
 
-      
-      <script type="module">
-        const modelViewer = document.querySelector("model-viewer");
-      
-        window.switchSrc = (element, name) => {
-          const base = baseEle + name;
-          modelViewer.src = base + '.glb'; // Web
-          modelViewer.setAttribute('ios-src',base+'.usdz') // IOS
-          modelViewer.poster = /*base*/baseEle + name + '.webp';
-          const slides = document.querySelectorAll(".slide");
-          slides.forEach((element) => {element.classList.remove("selected");});
-          element.classList.add("selected");
+  window.switchSrc = (element, name) => {
+    const base = baseEle + name;
+    modelViewer.src = base + '.glb'; // Web
+    modelViewer.setAttribute('ios-src', base + '.usdz') // IOS
+    modelViewer.poster = /*base*/baseEle + name + '.webp';
+    const slides = document.querySelectorAll(".slide");
+    slides.forEach((element) => { element.classList.remove("selected"); });
+    element.classList.add("selected");
 
-          // Audio Switch
+    // Audio Switch
 
-          AudioSwitch(name);
-          
-          // console.log(sound.paused);
+    AudioSwitch(name);
 
-          if(!sound.paused){
-            sound.load();
-            sound.play();
-            
-          }
-        };
-      
-        document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
-          // Keep slider interactions from affecting the XR scene.
-          ev.preventDefault();
-        });
-      </script>
+    // console.log(sound.paused);
+
+    if (!sound.paused) {
+      sound.load();
+      sound.play();
+
+    }
+  };
+
+  document.querySelector(".slider").addEventListener('beforexrselect', (ev) => {
+    // Keep slider interactions from affecting the XR scene.
+    ev.preventDefault();
+  });
+</script>
+<script>
+  //Audio Mute
+
+  function addOnBlurListener(onBlurCallback, onFocusCallback) {
+    var hidden, visibilityState, visibilityChange; // check the visiblility of the page
+
+    if (typeof document.hidden !== "undefined") {
+      hidden = "hidden"; visibilityChange = "visibilitychange"; visibilityState = "visibilityState";
+    } else if (typeof document.mozHidden !== "undefined") {
+      hidden = "mozHidden"; visibilityChange = "mozvisibilitychange"; visibilityState = "mozVisibilityState";
+    } else if (typeof document.msHidden !== "undefined") {
+      hidden = "msHidden"; visibilityChange = "msvisibilitychange"; visibilityState = "msVisibilityState";
+    } else if (typeof document.webkitHidden !== "undefined") {
+      hidden = "webkitHidden"; visibilityChange = "webkitvisibilitychange"; visibilityState = "webkitVisibilityState";
+    }
+
+
+    if (typeof document.addEventListener === "undefined" || typeof hidden === "undefined") {
+      // not supported
+    } else {
+      document.addEventListener(visibilityChange, function () {
+        switch (document[visibilityState]) {
+          case "visible":
+            if (onFocusCallback) onFocusCallback();
+            break;
+          case "hidden":
+            if (onBlurCallback) onBlurCallback();
+            break;
+        }
+      }, false);
+    }
+  }
+
+  function muteAudio() {
+    console.log('mute');
+    let sound = document.querySelector("#sound");
+    sound.muted = true;
+  }
+
+  function unMuteAudio() {
+    console.log('unmute');
+    let sound = document.querySelector("#sound");
+    sound.muted = false;
+
+  }
+
+  addOnBlurListener(muteAudio, unMuteAudio);
+
+
+</script>
 </body>
 </html>
-
-
-
-
-
